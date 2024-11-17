@@ -1,0 +1,290 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  line-height: calc(1em + 0.5rem);
+  font-family: "Libre Caslon Text", serif;
+  font-family: "Space Grotesk", sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+body {
+  font-family: "Space Grotesk", sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #150123;
+  color: white;
+}
+
+.container {
+  display: grid;
+  width: 100%;
+  grid-template-rows: 15vh auto auto;
+  grid-template-areas:
+    "nav"
+    "header"
+    "main";
+  padding: 0 30px;
+}
+
+/* Navigation Styles */
+
+.nav {
+  grid-area: nav;
+  background: #150123;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+  z-index: 80000;
+}
+
+.nav ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.nav ul li {
+  position: relative;
+}
+
+.nav ul li a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: #fffaf1;
+  font-size: 14px;
+  font-style: italic;
+  transition: color 0.5s, transform 0.3s;
+}
+
+.nav ul li .icon {
+  font-size: 90px !important;
+  color: #525b92;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.nav ul li span {
+  font-size: 12px;
+  font-style: italic;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s, transform 0.3s;
+  pointer-events: none;
+  position: absolute;
+  top: 40px;
+  text-align: center;
+  color: #525b92;
+}
+
+.fa-solid {
+  font-size: 32px;
+}
+
+.nav ul li a:hover .icon {
+  transform: scale(1.2);
+  color: #ffcc00;
+}
+
+.nav ul li a:hover span {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.nav ul li a:hover {
+  color: #ffcc00;
+}
+
+/* Header Section */
+
+.header {
+  grid-area: header;
+  background: #251b59;
+  text-align: center;
+  padding: 20px;
+  border-radius: 10px;
+  color: white;
+  font-size: 2rem;
+}
+
+h1 {
+  position: relative;
+
+  
+  font-size: 2em;
+  letter-spacing: 4px;
+  overflow: hidden;
+  background: linear-gradient(90deg, #251b59, white, #251b59);
+  background-repeat: no-repeat;
+  background-size: 80%;
+  animation: animate 6s linear infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: rgba(52, 46, 39, 0);
+}
+
+@keyframes animate {
+  0% {
+    background-position: -500%;
+  }
+  100% {
+    background-position: 500%;
+  }
+}
+
+
+/* Main Content */
+
+.main {
+  grid-area: main;
+  background: #24074d;
+  margin-block: 20px;
+  border-radius: 10px;
+  display: grid;
+  grid-template-rows: auto auto auto;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "form"
+    "perd"
+    "shit";
+  padding: 20px;
+}
+
+.form {
+  grid-area: form;
+  background:  #29327b;
+  display: grid;
+  grid-template-rows: auto auto auto auto auto auto;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "a"
+    "b"
+    "c"
+    "d"
+    "e"
+    "f";
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.form-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  
+
+}
+
+.form-item label {
+  font-size: 1rem;
+  color: white;
+  
+}
+
+.form-item input {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background: #241036;
+  color: white;
+  outline: none;
+  font-size: 1rem;
+}
+
+.form-item input::placeholder {
+  color: #888;
+}
+
+.form-item button {
+  background: #ffcc00;
+  color: #251b59;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.form-item button:hover {
+  background: #f2b000;
+}
+
+.perd {
+  grid-area: perd;
+  background: #320962;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.perd h2 {
+  color: white;
+  margin-bottom: 10px;
+}
+
+.shit {
+  grid-area: shit;
+  background: #1e033d;
+  text-align: center;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.shit a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.shit a:hover {
+  color: #f2b000;
+  text-decoration: underline;
+}
+.form-item button {
+  background: white; /* Change to white */
+  color: #251b59;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.form-item button:hover {
+  background: #747bab; /* Slightly lighter shade for hover effect */
+  color:white;
+}

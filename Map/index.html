@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <title>Location Map</title>
+    <style>
+      body,
+      html {
+        height: auto;
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      .nav {
+        height: 15vh;
+        width: 100vw;
+        background: #150123;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 20px;
+        z-index: 80000;
+      }
+
+      .nav ul {
+        list-style-type: none;
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+      .nav ul li {
+        position: relative;
+      }
+
+      .nav ul li a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-decoration: none;
+        color: #fffaf1;
+        font-size: 14px;
+        font-style: italic;
+        transition: color 0.5s, transform 0.3s;
+      }
+
+      .nav ul li .icon {
+        font-size: 90px !important;
+        color: #525b92;
+        transition: transform 0.3s ease, color 0.3s ease;
+      }
+
+      .nav ul li span {
+        font-size: 12px;
+        font-style: italic;
+        color: #525b92;
+        opacity: 0;
+        transform: translateY(10px);
+        transition: opacity 0.3s, transform 0.3s;
+        pointer-events: none;
+        position: absolute;
+        top: 40px;
+        text-align: center;
+        color: #525b92;
+      }
+
+      .fa-solid {
+        font-size: 32px;
+      }
+
+      .nav ul li a:hover .icon {
+        transform: scale(1.2);
+        color: #525b92;
+      }
+
+      .nav ul li a:hover span {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+      }
+
+      .nav ul li a:hover {
+        color: #525b92;
+      }
+#map {
+  height: 85vh;
+  border: 2px solid white;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+#map:hover {
+  box-shadow: inset 0 0 0 rgba(0, 0, 0, 0);
+}
+    </style>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAE8pLxNifN304FuZ54WgPHeeRcLkhMzBQ&callback=initMap"
+      async
+      defer
+    ></script>
+  </head>
+  <body>
+    <div class="nav">
+      <ul>
+        <li class="home">
+          <a href="home.html">
+            <i class="fa-solid fa-earth-americas"></i>
+            <span>Home</span>
+          </a>
+        </li>
+        <li class="skibidy">
+          <a href="
+https://asteroid-atlas.vercel.app/">
+            <i class="fa-solid fa-stopwatch"></i>
+            <span>Countdown</span>
+          </a>
+        </li>
+        <li class="lessons">
+          <a href="https://asteriodcollisions.glitch.me/">
+            <i class="fa-solid fa-meteor"></i>
+            <span>Collision</span>
+          </a>
+        </li>
+        <li class="practice">
+          <a href="https://asteroid-atlas-map.glitch.me/">
+            <i class="fa-solid fa-map-location-dot"></i>
+            <span>Map</span>
+          </a>
+        </li>
+        <li class="practice">
+          <a href="https://atlasforum.glitch.me/">
+           <i class="fa-solid fa-users"></i>
+            <span>Forum</span>
+          </a>
+        </li>
+       
+      </ul>
+    </div>
+    <div id="map"></div>
+
+    <script>
+      let map;
+      let markers = [];
+
+      function initMap() {
+        // Define the map styles
+        const styles = [
+          {
+            elementType: "geometry",
+            stylers: [
+              {
+                color: "#212121",
+              },
+            ],
+          },
+          {
+            elementType: "labels.icon",
+            stylers: [
+              {
+                visibility: "off",
+              },
+            ],
+          },
+          {
+            elementType: "labels.text.fill",
+            stylers: [
+              {
+                color: "#757575",
+              },
+            ],
+          },
+          {
+            elementType: "labels.text.stroke",
+            stylers: [
+              {
+                color: "#212121",
+              },
+            ],
+          },
+          {
+            featureType: "administrative",
+            elementType: "geometry",
+            stylers: [
+              {
+                color: "#757575",
+              },
+            ],
+          },
+          {
+            featureType: "landscape",
+            elementType: "geometry",
+            stylers: [
+              {
+                color: "#e8e8e8",
+              },
+            ],
+          },
+          {
+            featureType: "poi",
+            elementType: "geometry",
+            stylers: [
+              {
+                color: "#c0c0c0",
+              },
+            ],
+          },
+          {
+            featureType: "road",
+            elementType: "geometry",
+            stylers: [
+              {
+                color: "#ffffff",
+              },
+            ],
+          },
+          {
+            featureType: "water",
+            elementType: "geometry",
+            stylers: [
+              {
+                color: "#150123",
+              },
+            ],
+          },
+        ];
+
+        // Initialize map centered at a default location
+        map = new google.maps.Map(document.getElementById("map"), {
+          center: { lat: 20, lng: 5 }, // Default map center
+          zoom: 2,
+          styles: styles, // Apply custom style
+        });
+
+        // Fetch the JSON data
+        fetch("locations.json")
+          .then((response) => response.json())
+          .then((data) => {
+            data.forEach((location) => {
+              const position = { lat: location.reclat, lng: location.reclong };
+
+              const marker = new google.maps.Marker({
+                position: position,
+                map: map,
+                title: location.name,
+              });
+
+              const infoWindow = new google.maps.InfoWindow({
+                content: `
+                  <h3>${location.name}</h3>
+                  <p>ID: ${location.id}</p>
+                  <p>Class: ${location.recclass}</p>
+                  <p>Mass: ${location.mass}g</p>
+                  <p>Fall: ${location.fall}</p>
+                  <p>Year: ${location.year}</p>
+                `,
+              });
+
+              marker.addListener("click", () => {
+                infoWindow.open(map, marker);
+              });
+
+              markers.push(marker);
+            });
+          })
+          .catch((error) => console.error("Error loading locations:", error));
+      }
+    </script>
+  </body>
+</html>

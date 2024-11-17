@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="style.css" />
+   <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      rel="stylesheet"
+    />
+  <title>Asteroid Danger Prediction</title>
+</head>
+<body>
+
+  <!-- Content -->
+  <div class="container">
+    
+    <!-- Navigation Bar -->
+    <div class="nav">
+      <ul>
+        <li class="home">
+          <a href="https://asteroid-atlas-map.glitch.me/home.html">
+            <i class="fa-solid fa-earth-americas"></i>
+            <span>Home</span>
+          </a>
+        </li>
+        <li class="skibidy">
+          <a href="
+https://asteroid-atlas.vercel.app/
+">
+            <i class="fa-solid fa-stopwatch"></i>
+            <span>Countdown</span>
+          </a>
+        </li>
+        <li class="lessons">
+          <a href="https://asteriodcollisions.glitch.me/">
+            <i class="fa-solid fa-meteor"></i>
+            <span>Collision</span>
+          </a>
+        </li>
+        <li class="practice">
+          <a href="https://asteroid-atlas-map.glitch.me/">
+            <i class="fa-solid fa-map-location-dot"></i>
+            <span>Map</span>
+          </a>
+        </li>
+        <li class="practice">
+          <a href="https://atlasforum.glitch.me/">
+           <i class="fa-solid fa-users"></i>
+            <span>Map</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    
+    <!-- Header Section -->
+    <div class="header">
+      <h1>Asteroid Danger Prediction Form</h1>
+    </div>
+    
+    <!-- Main Content Area with Form -->
+    <div class="main">
+      <form class="form" id="asteroidForm">
+        <div class="form-item a">
+          <label for="name">Asteroid Name:</label>
+          <input type="text" id="name" required><br><br>
+        </div>
+        
+        <div class="form-item b">
+          <label for="date">Date of Observation:</label>
+          <input type="date" id="date" required><br><br>
+        </div>
+        
+        <div class="form-item c">
+          <label for="velocity">Velocity (km/s):</label>
+          <input type="number" id="velocity" required><br><br>
+        </div>
+        
+        <div class="form-item d">
+          <label for="size">Size (diameter in meters):</label>
+          <input type="number" id="size" required><br><br>
+        </div>
+        
+        <div class="form-item e">
+          <label for="angle">Trajectory Angle (degrees):</label>
+          <input type="number" id="angle" required><br><br>
+        </div>
+        
+        <div class="form-item f">
+          <button type="submit">Predict Danger</button>
+        </div>
+      </form>
+
+      <h2 class="perd" id="predictionResult"></h2>
+      <p class=" shit">Check out the <a href="https://colab.research.google.com/drive/1kl8AZFwh1pCWqDK_M4PS49Rn9g6w4vvy?usp=sharing" target="_blank">Machine Learning Algorithm Source Code</a>!</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

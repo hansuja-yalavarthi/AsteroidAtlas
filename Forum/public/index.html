@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<link href="https://kit.fontawesome.com/a076d05399.js" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+  
+  <title>Asteroid Forum</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+      <div class="nav">
+      <ul>
+        <li class="home">
+          <a href="https://asteroid-atlas-map.glitch.me/home.html">
+            <i class="fa-solid fa-earth-americas"></i>
+            <span>Home</span>
+          </a>
+        </li>
+        <li class="skibidy">
+          <a href="
+https://asteroid-atlas.vercel.app/
+">
+            <i class="fa-solid fa-stopwatch"></i>
+            <span>Countdown</span>
+          </a>
+        </li>
+        <li class="lessons">
+          <a href="https://asteriodcollisions.glitch.me/">
+            <i class="fa-solid fa-meteor"></i>
+            <span>Collision</span>
+          </a>
+        </li>
+        <li class="practice">
+          <a href="https://asteroid-atlas-map.glitch.me/">
+            <i class="fa-solid fa-map-location-dot"></i>
+            <span>Map</span>
+          </a>
+        </li>
+        <li class="practice">
+          <a href="https://atlasforum.glitch.me/">
+           <i class="fa-solid fa-users"></i>
+            <span>Map</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+     <header>
+    <h1>Collaborate on Asteroid Insights</h1>
+  </header>
+     <main>
+    <aside class="sidebar">
+      <div class="sideH2">
+         <h2>Filter by Topic</h2>
+      </div>
+     
+      <div class="buttonContainer">
+          <button class="side1 sid" onclick="filterPosts('Mining')">Mining</button>
+      <button class="side2 sdi" onclick="filterPosts('Defense')">Defense</button>
+      <button class="side3 sid" onclick="filterPosts('Research')">Research</button>
+      <button class="side4 sid" onclick="getPosts()">All</button>
+      </div>
+    
+      
+      
+    </aside>
+
+    <section class="forum">
+      
+<div class="formContainer"> 
+  
+     
+      <h3 class="form1">Add a Post</h3>
+      <form class="formInner" id="postForm">
+        
+        <input class="form2" type="text" id="title" placeholder="Title" required />
+        <textarea class="form3" id="description" placeholder="Description"></textarea>
+        <input class="form4 " type="text" id="tags" placeholder="Tags (e.g., Mining)" />
+        <button class="form5" type="submit">Post</button>
+      </form>
+   </div>
+      <h2 class="jk">Posts</h2>
+      <div id="postList"></div>
+    </section>
+
+    <aside class="sidebar">
+      <h2>Live NASA Data</h2>
+      <div id="nasaFeed">Loading...</div>
+    </aside>
+  </main>
+
+    
+  </div>
+ 
+
+ 
+  <footer>
+    <p>Forum Rules | Contact Support</p>
+  </footer>
+
+  <script src="client.js"></script>
+</body>
+</html>
