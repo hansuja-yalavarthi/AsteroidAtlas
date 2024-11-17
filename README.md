@@ -13,3 +13,6 @@ The **Asteroid Awareness Platform** is an interactive web application designed t
 - **Real-Time Data Feeds**: Using NASA APIs and datasets from Kaggle for up-to-date asteroid information, using SQL.
 - **Web Development**: Built with HTML, CSS, JavaScript, and various frameworks for interactive elements such as Node.js.
 - **Visualization**: 3D tools for collision risk visualization and historical impact analysis.
+
+
+Project link: https://asteroid-atlas-map.glitch.me/home.html
